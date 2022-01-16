@@ -1,0 +1,58 @@
+{% extends "basic.html" %} {% block title %} Add Product {% endblock %} {% block content %}
+
+<div class="content-wrapper ">
+<div class="container pt-5">
+<div class="col-sm-11 text-white bg-white px-3 py-3 mx-auto d-block  shadow">
+<p class="dashboard-heading-1">
+Add Product</p>
+
+
+        {% for message in get_flashed_messages() %}
+        <div class="alert alert-primary text-center" role="alert">
+            <p>{{ message }}</p>
+        </div>
+        {% endfor %}
+
+
+
+        <div class="mt-5"></div>
+        <form method="POST" action="/product-add" enctype="multipart/form-data">
+<div class="row">
+            <div class="col-sm-6">
+
+                <select class="form-control col" name="category_id" id="category" aria-label="Default select example" onchange="changeSubCategory(this.value);">   
+            <option selected > Select Category</option>
+            {% for i in category %}
+            <option value="{{i[0]}} ">{{i[1]}}</option>
+            {% endfor %}  
+          </select>
+            </div>
+
+                <div class="col-sm-6">
+                    <input name="title" type="text" class="form-control" placeholder="Title">
+                </div>
+
+                
+                <div class="col-sm-6">
+                    <input name="date" type="date" class="form-control" >
+                </div>
+
+            
+
+                <div class="col-sm-6">
+                    <input name="des" type="text" class="form-control" placeholder="Description">
+                </div>
+
+                <div class="col-sm-6">
+                    <input name="price" type="text" class="form-control" placeholder="Price">
+                </div>
+                <div class="col-sm-6">
+                    <input name="images" type="file" class="form-control" >
+                </div>
+
+
+
+                <button  type="submit " class="mt-2 dashboard-btn-1 mx-auto d-block">Submit</button>
+</div></form></div></div></div>
+
+{% endblock %}

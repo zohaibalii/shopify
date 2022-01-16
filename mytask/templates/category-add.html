@@ -1,0 +1,45 @@
+{% extends "basic.html" %} {% block title %} Add Category {% endblock %} {% block content %}
+
+<div class="content-wrapper ">
+    <div class="container pt-5">
+        <div class="col-sm-11 text-white bg-white px-3 py-3 mx-auto d-block  shadow">
+            <p class="dashboard-heading-1">
+                Add Category</p>
+
+
+            {% if error|length > 1 %}
+            <div class="alert  alert-danger alert-dismissible fade show" role="alert">
+                <span class="badge badge-pill badge-danger">Alert </span> {{ error }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+            </div>
+            {% endif %} {% if message|length > 1 %}
+            <div class="alert  alert-success alert-dismissible fade show text-center" role="alert">
+                <span class="badge badge-pill badge-success">Success </span> {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+            </div>
+            {% endif %}
+
+
+
+
+            <form method="POST" action="/category-add" enctype="multipart/form-data">
+                <div class="row">
+
+
+                    <div class="col-sm-6">
+                        <input name="category_name" type="text" class="form-control" placeholder="Add New Category">
+                    </div>
+                    <div class="col-sm-6">
+                        <input name="images" type="file" class="form-control" placeholder="Add New Category">
+                    </div>
+
+                    <button type="submit " class="mt-2 dashboard-btn-1 mx-auto d-block">Add Category</button>
+                </div>
+            </form>
+
+        </div>
+        </ {% endblock %}
